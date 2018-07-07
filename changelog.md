@@ -1,4 +1,4 @@
-# BlockHub Node Operator Changelog
+# Changelog
 
 ### 0.2.6
 
