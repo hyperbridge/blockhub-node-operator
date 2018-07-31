@@ -1,29 +1,44 @@
 const IPFS = require("ipfs");
 const fs = require("fs");
+//const OrbitDB = require("orbit-db");
 //const path = require("path");
 
-const node = new IPFS();
+
+const ipfsNode = new IPFS();
 let hash = "";
 
 const files = [
     {
-        path: "/tmp/test.txt",
-        content: fs.readFileSync(__dirname + "/tmp/test.txt")
+        path: "/tmp/test.html",
+        content: fs.readFileSync(__dirname + "/tmp/test.html")
     }
 ]
 
-node.on("ready", async () => {
+ipfsNode.on("error", (e) => console.log(e));
+ipfsNode.on("ready", async () => {
+
+    //ipfs.swarm
     console.log("IPFS node is online");
 
-    await node.files.add(files, function(err, returnFiles) {
+    //ipfsId = await IPFS.id();
+    //console.log(ipfsId);
+
+    await ipfsNode.files.add(files, function(err, returnFiles) {
         console.log(returnFiles);
-        hash = returnFiles.find(x => x.path === "/tmp/test.txt").hash;
+        hash = returnFiles.find(x => x.path === "/tmp/test.html").hash;
         console.log(hash);
 
-        node.pin.add(hash, function(err, res) {
-            console.log(res);
+        ipfsNode.pin.add(hash, function(err, res) {
+            console.log("Pin Res:", res);
+            ipfsNode.files.cat(hash, function(err, res) {
+                console.log(res);
+            })
         })
+    
+        
     })
+
+    
 
     
 
@@ -31,3 +46,24 @@ node.on("ready", async () => {
     //     console.log("IPFS node is now offine");
     // })
 })
+
+
+
+// const ipfsOptions = {
+//     config: {
+//       "Addresses": {
+//         "Swarm": [
+//           "/ip4/127.0.0.1/tcp/4001",
+//           "/ip6/::/etcp/4001",
+//           "/ip4/127.0.0.1/tcp/4002/ws"
+//         ],
+//         "Announce": [],
+//         "NoAnnounce": [],
+//         "API": "/ip4/127.0.0.1/tcp/5001",
+//         "Gateway": "/ip4/127.0.0.1/tcp/8080"
+//       }
+//     },
+//     EXPERIMENTAL: {
+//       pubsub: true
+//     }
+//   }
