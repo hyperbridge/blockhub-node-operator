@@ -1,69 +1,42 @@
-const IPFS = require("ipfs");
+const IPFS = require("ipfs-api");
 const fs = require("fs");
-//const OrbitDB = require("orbit-db");
-//const path = require("path");
 
+const ipfs = new IPFS('localhost', '5001');
 
-const ipfsNode = new IPFS();
-let hash = "";
+var ipfsHost    = 'localhost',
+    ipfsAPIPort = '5001',
+    ipfsWebPort = '8080'
+const ipfsDataHost = "http://" + ipfsHost + ':' + ipfsWebPort + "/ipfs"
 
 const files = [
     {
-        path: "/tmp/test.html",
-        content: fs.readFileSync(__dirname + "/tmp/test.html")
+        path: "/tmp/wallet-twoInteractions.mp4",
+        content: fs.createReadStream(__dirname + "/tmp/wallet-twoInteractions.mp4")
     }
 ]
 
-ipfsNode.on("error", (e) => console.log(e));
-ipfsNode.on("ready", async () => {
 
-    //ipfs.swarm
-    console.log("IPFS node is online");
-
-    //ipfsId = await IPFS.id();
-    //console.log(ipfsId);
-
-    await ipfsNode.files.add(files, function(err, returnFiles) {
-        console.log(returnFiles);
-        hash = returnFiles.find(x => x.path === "/tmp/test.html").hash;
-        console.log(hash);
-
-        ipfsNode.pin.add(hash, function(err, res) {
-            console.log("Pin Res:", res);
-            ipfsNode.files.cat(hash, function(err, res) {
-                console.log(res);
-            })
-        })
-    
+ipfs.swarm.peers(function(err, response) {
+    if (err) {
+        console.error(err);
+    } else {
+        //console.log(response);
+        console.log("IPFS - connected to " + response.length + " peers");
         
-    })
+    }
+});
 
-    
-
-    
-
-    // node.stop(() => {
-    //     console.log("IPFS node is now offine");
-    // })
+ipfs.add(files, async (err, result) => {
+    //fs.unlink(__dirname + "/tmp/test.txt");
+    if (err) {
+        console.error('Error sending file: ', err);
+        return null;
+    }
+    else {
+        var textURL = await ipfsDataHost + "/" + result[0].hash;
+        await console.log('File: ', result[0].hash);
+        await console.log(textURL);
+    }
+    console.log(result);
+    console.log(result[0].hash);
 })
-
-
-
-// const ipfsOptions = {
-//     config: {
-//       "Addresses": {
-//         "Swarm": [
-//           "/ip4/127.0.0.1/tcp/4001",
-//           "/ip6/::/etcp/4001",
-//           "/ip4/127.0.0.1/tcp/4002/ws"
-//         ],
-//         "Announce": [],
-//         "NoAnnounce": [],
-//         "API": "/ip4/127.0.0.1/tcp/5001",
-//         "Gateway": "/ip4/127.0.0.1/tcp/8080"
-//       }
-//     },
-//     EXPERIMENTAL: {
-//       pubsub: true
-//     }
-//   }
