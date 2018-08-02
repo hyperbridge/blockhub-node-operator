@@ -1,3 +1,14 @@
+/**
+ * IFPS Test
+ * 
+ * Setup prior to running:
+ * - Install IPFS globally
+ * - Run commands in terminal: 
+ *      ipfs config Addresses.Gateway /ip4/127.0.0.1/tcp/9000
+ *      
+ */
+
+
 const IPFS = require("ipfs-api");
 const fs = require("fs");
 
@@ -5,7 +16,7 @@ const ipfs = new IPFS('localhost', '5001');
 
 var ipfsHost    = 'localhost',
     ipfsAPIPort = '5001',
-    ipfsWebPort = '8080'
+    ipfsWebPort = '9000'
 const ipfsDataHost = "http://" + ipfsHost + ':' + ipfsWebPort + "/ipfs"
 
 const files = [
