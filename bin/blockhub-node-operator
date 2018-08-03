@@ -4,7 +4,7 @@ var path = require('path')
   , pkg = require('../package.json')
   , fs = require('fs')
   , version = pkg.version
-  , BlockHubServer = require('../lib').BlockHubServer
+  , BlockHubServer = require('../lib/blockhubServer')
   , util = require('../lib/util')
   , opts = require('optimist')
     .usage('Usage: $0')
@@ -87,7 +87,7 @@ if (opts.sslkey || opts.sslcert) {
 
 
 var userPath = opts.path
-var server = BlockHubServer(opts, function(server) {
+var server = BlockHubServer.init(opts, function(server) {
   var host = server.address().address
   var port = server.address().port
 
