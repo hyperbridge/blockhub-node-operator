@@ -2,7 +2,7 @@ const Joi = require('joi');
 const productSchema = require('../schemas/product');
 const Product = require('../models/product');
 
-exports.get_product = async (req, res, next) => {
+exports.get_product = async req => {
   const { productId } = req.params;
 
   const product = await Product.findOne({ _id: productId });
@@ -12,7 +12,7 @@ exports.get_product = async (req, res, next) => {
   };
 };
 
-exports.post_product = async (req, res, next) => {
+exports.post_product = async req => {
   const { product } = req.body;
   await Joi.validate(product, productSchema);
 
@@ -25,7 +25,7 @@ exports.post_product = async (req, res, next) => {
   };
 };
 
-exports.patch_product = async (req, res, next) => {
+exports.patch_product = async req => {
   const { productId } = req.params;
   const { product } = req.body;
 
@@ -36,7 +36,7 @@ exports.patch_product = async (req, res, next) => {
   };
 };
 
-exports.delete_product = async (req, res, next) => {
+exports.delete_product = async req => {
   const { productId } = req.params;
 
   await Product.deleteOne({ _id: productId });

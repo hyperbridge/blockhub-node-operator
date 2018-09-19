@@ -11,9 +11,9 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-
+app.use(cors());
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const productsRoutes = require('./routes/products');
@@ -25,11 +25,11 @@ app.use((req, res, next) => res.status(404).json({ msg: 'Inappropriate request' 
 
 app.use((err, req, res, next) => {
   // throw(err);
-  // console.log(res);
+  // console.log(err);
   res.status(err.status || 500);
-  res.json({ msg: err.msg || err.message || 'undefined error' });
+  res.json({ msg: err.msg || err.message || 'Internal server error' });
 });
 
 
-app.listen(9000);
-// const server = ExpressServer(app.listen(9000), { debug: false });
+// app.listen(9000);
+ExpressServer(app.listen(9000), { debug: true });
