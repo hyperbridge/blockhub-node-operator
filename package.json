@@ -28,6 +28,6 @@
   "scripts": {
     "test": "mocha test",
     "start": "bin/blockhub-node-operator --port ${PORT:=9000}",
-    "dev": "nodemon ./app/index.js localhost 9000"
+    "dev": "nodemon ./api/index.js localhost 9000"
   }
 }
