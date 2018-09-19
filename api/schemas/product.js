@@ -19,10 +19,12 @@ const productSchema = Joi.object().keys({
   downloads: Joi.number(),
   plans: Joi.array(),
   frequently_traded_assets: Joi.array(),
-  sale_box: Joi.array(),
+  sale_box: Joi.object(),
   rating: Joi.array(),
   assets: Joi.array(),
   community: Joi.object(),
   name_url: Joi.string(),
   steam_id: Joi.number()
 });
+
+module.exports = productSchema;

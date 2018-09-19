@@ -6,6 +6,8 @@ const ExpressServer = require('../lib/index').ExpressServer;
 const bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 const productsRoutes = require('./routes/products');
 
@@ -14,10 +16,13 @@ app.use('/product', productsRoutes);
 
 app.use((req, res, next) => res.status(404).json({ msg: 'Inappropriate request' }));
 
-app.use((req, res, next, err) => {
-  throw(err);
+app.use((err, req, res, next) => {
+  // throw(err);
+  // console.log(res);
+  res.status(err.status || 500);
+  res.json({ msg: err.msg || err.message || 'undefined error' });
 });
 
 
-
-const server = ExpressServer(app.listen(9000), { debug: true });
+app.listen(9000);
+// const server = ExpressServer(app.listen(9000), { debug: false });

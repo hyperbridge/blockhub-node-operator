@@ -1,86 +1,88 @@
 {
-  "id": 3, 
-  "name": "DOOM",
-  "images": {
-      "header": null,
-      "medium_tile": "/static/img/products/doom-20087/med-tile.jpg",
-      "main": null,
-      "icon": "/static/img/doom-20087/icon.jpg",
-      "preview": [
-          "/static/img/products/doom-20087/preview-01.jpg",
-          "/static/img/products/doom-20087/preview-02.jpg",
-          "/static/img/products/doom-20087/preview-03.jpg",
-          "/static/img/products/doom-20087/preview-04.jpg",
-          "/static/img/products/doom-20087/preview-05.jpg",
-          "/static/img/products/doom-20087/preview-06.jpg"
-      ]
-  },
-  "video": "/static/videos/products/doom-20087/trailer.mp4",
-  "genre": "Action",
-  "release_date": "12 May, 2016",
-  "developer": "id Software",
-  "publisher": "Bethesda Softworks",
-  "content": "Developed by id software, the studio that pioneered the first-person shooter genre and created multiplayer Deathmatch, DOOM returns as a brutally fun and challenging modern-day shooter experience. Relentless demons, impossibly destructive guns, and fast, fluid movement provide the foundation for intense, first-person combat &#x2013; whether you&#x2019;re obliterating demon hordes through the depths of Hell in the single-player campaign, or competing against your friends in numerous multiplayer modes. Expand your gameplay experience using DOOM SnapMap game editor to easily create, play, and share your content with the world. <br><br><img src=\"https://steamcdn-a.akamaihd.net/steam/apps/379720/extras/doom-giffy-under-10.jpg?t=1533678963\"><br><br><strong>STORY:</strong><br>You&#x2019;ve come here for a reason. The Union Aerospace Corporation&#x2019;s massive research facility on Mars is overwhelmed by fierce and powerful demons, and only one person stands between their world and ours.  As the lone DOOM Marine, you&#x2019;ve been activated to do one thing &#x2013; kill them all.<ul><li><strong>A Relentless Campaign</strong><br>There is no taking cover or stopping to regenerate health as you beat back Hell&#x2019;s raging demon hordes.  Combine your arsenal of futuristic and iconic guns, upgrades, movement and an advanced melee system to knock-down, slash, stomp, crush, and blow apart demons in creative and violent ways. <br><br></li><li><strong>Return of id Multiplayer</strong><br>Dominate your opponents in DOOM&#x2019;s signature, fast-paced arena-style combat. In both classic and all-new game modes, annihilate your enemies utilizing your personal blend of skill, powerful weapons, vertical movement, and unique power-ups that allow you to play as a demon.<br><br></li><li><strong>Endless Possibilities</strong><br>DOOM SnapMap &#x2013; a powerful, but easy-to-use game and level editor &#x2013; allows for limitless gameplay experiences on every platform.  Without any previous experience or special expertise, any player can quickly and easily snap together and visually customize maps, add pre-defined or completely custom gameplay, and even edit game logic to create new modes.  Instantly play your creation, share it with a friend, or make it available to players around the world &#x2013; all in-game with the push of a button.</li></ul>",
-  "developer_tags": [
-      "FPS",
-      "Action",
-      "Gore",
-      "Demons",
-      "Shooter",
-      "First-Person"
-  ],
-  "language_support": [
-      {
-          "name": "English",
-          "interface": true,
-          "full_audio": true,
-          "subtitles": true
-      },
-      {
-          "name": "French",
-          "interface": true,
-          "full_audio": true,
-          "subtitles": true
-      }
-  ],
-  "system_requirements": [
-      {
-          "os": "win",
-          "system": "Windows 7/8.1/10 (64-bit versions)",
-          "processor": "Intel Core i7-3770/AMD FX-8350 or better",
-          "memory": "8 GB RAM",
-          "graphics": "NVIDIA GTX 970 4GB/AMD Radeon R9 290 4GB or better",
-          "storage": "55 GB available space",
-          "additional_notes": "Requires Steam activation and broadband internet connection for Multiplayer and SnapMap"
-      }
-  ],
-  "system_tags": [
-      "sale",
-      "new",
-      "featured",
-      "trending",
-      "top_seller",
-      "specials"
-  ],
-  "type": "game",
-  "downloads": 0,
-  "plans": [
-  ],
-  "frequently_traded_assets": [
-  ],
-  "sale_box": {
-      "title": null,
-      "price": 0,
-      "link": null
-  },
-  "rating": [
-  ],
-  "assets": [
-  ],
-  "community": {
-      "discussions": [
-      ]
-  },
-  "name_url": "doom-20087",
-  "steam_id": 379720
+    "product": {
+        "name": "DOOM",
+        "images": {
+            "header": null,
+            "medium_tile": "/static/img/products/doom-20087/med-tile.jpg",
+            "main": null,
+            "icon": "/static/img/doom-20087/icon.jpg",
+            "preview": [
+                "/static/img/products/doom-20087/preview-01.jpg",
+                "/static/img/products/doom-20087/preview-02.jpg",
+                "/static/img/products/doom-20087/preview-03.jpg",
+                "/static/img/products/doom-20087/preview-04.jpg",
+                "/static/img/products/doom-20087/preview-05.jpg",
+                "/static/img/products/doom-20087/preview-06.jpg"
+            ]
+        },
+        "price": 0,
+        "video": "/static/videos/products/doom-20087/trailer.mp4",
+        "genre": "Action",
+        "release_date": "12 May, 2016",
+        "developer": "id Software",
+        "publisher": "Bethesda Softworks",
+        "content": "Developed by id software...",
+        "developer_tags": [
+            "FPS",
+            "Action",
+            "Gore",
+            "Demons",
+            "Shooter",
+            "First-Person"
+        ],
+        "language_support": [
+            {
+                "name": "English",
+                "interface": true,
+                "full_audio": true,
+                "subtitles": true
+            },
+            {
+                "name": "French",
+                "interface": true,
+                "full_audio": true,
+                "subtitles": true
+            }
+        ],
+        "system_requirements": [
+            {
+                "os": "win",
+                "system": "Windows 7/8.1/10 (64-bit versions)",
+                "processor": "Intel Core i7-3770/AMD FX-8350 or better",
+                "memory": "8 GB RAM",
+                "graphics": "NVIDIA GTX 970 4GB/AMD Radeon R9 290 4GB or better",
+                "storage": "55 GB available space",
+                "additional_notes": "Requires Steam activation and broadband internet connection for Multiplayer and SnapMap"
+            }
+        ],
+        "system_tags": [
+            "sale",
+            "new",
+            "featured",
+            "trending",
+            "top_seller",
+            "specials"
+        ],
+        "type": "game",
+        "downloads": 0,
+        "plans": [
+        ],
+        "frequently_traded_assets": [
+        ],
+        "sale_box": {
+            "title": null,
+            "price": 0,
+            "link": null
+        },
+        "rating": [
+        ],
+        "assets": [
+        ],
+        "community": {
+            "discussions": [
+            ]
+        },
+        "name_url": "doom-20087",
+        "steam_id": 379720
+    }
 }
