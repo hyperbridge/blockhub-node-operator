@@ -4,6 +4,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const ExpressServer = require('../lib/index').ExpressServer;
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@blockhub-89gr6.mongodb.net/test?retryWrites=true`,
+  { useNewUrlParser: true }
+);
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
