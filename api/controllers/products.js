@@ -12,9 +12,17 @@ exports.get_product = async req => {
 
 exports.post_product = async req => {
   const { product } = req.body;
+  const { id } = req.userData;
   await Joi.validate(product, productSchema);
 
-  const { _id: id } = await new Product(product).save();
+  const newProduct = {
+    ...product,
+    author: id,
+    createdAt: Date.now,
+    updatedAt: Date.now
+  }
+
+  const { _id: id } = await new Product(newProduct).save();
 
   return {
     status: 201,
@@ -26,9 +34,10 @@ exports.post_product = async req => {
 exports.patch_product = async req => {
   const { productId } = req.params;
   const { product } = req.body;
-  await Joi.validate(product, productSchema);
+  const { id } = req.userData;
 
-  await Product.where({ _id: productId }).updateOne(product);
+  await Joi.validate(product, productSchema);
+  await Product.where({ _id: productId, author: id }).updateOne(product);
 
   return {
     msg: `Product with id ${productId} has been successfully updated`
@@ -38,7 +47,7 @@ exports.patch_product = async req => {
 exports.delete_product = async req => {
   const { productId } = req.params;
 
-  await Product.deleteOne({ _id: productId });
+  await Product.deleteOne({ _id: productId, author: id });
 
   return {
     msg: `Product with id ${productId} has been successfully deleted`

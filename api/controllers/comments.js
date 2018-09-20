@@ -28,7 +28,8 @@ exports.post_comment = async req => {
     author: id,
     objectId,
     rate: 0,
-    date: Date.now,
+    createdAt: Date.now,
+    updatedAt: Date.now,
     replies: []
   } 
   const { _id: id } = await new Comment(newComment).save();

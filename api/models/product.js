@@ -24,7 +24,10 @@ const productSchema = mongoose.Schema({
   assets: Array,
   community: Object,
   name_url: String,
-  steam_id: Number
+  steam_id: Number,
+  createdAt: Date,
+  updatedAt: Date,
+  author: String
 });
 
 module.exports = mongoose.model('Product', productSchema);

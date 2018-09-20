@@ -5,7 +5,8 @@ const commentSchema = Schema({
   author: { type: String, required: true },
   text: { type: String, required: true },
   rate: { type: Number, required: true },
-  date: Date,
+  createdAt: Date,
+  updatedAt: Date,
   replies: Array
 });
 
