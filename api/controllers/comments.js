@@ -5,7 +5,7 @@ exports.get_comment = async req => {
   const { commentId } = req.params;
 
   const product = await Comment.findOne({ _id: productId });
-  
+
   return { product };
 };
 
@@ -20,11 +20,14 @@ exports.get_comments = async req => {
 exports.post_comment = async req => {
   const { objectId } = req.params;
   const { comment } = req.body;
+  const { id } = req.userData;
 
   await Joi.validate(comment, commentSchema);
   const newComment = {
     ...comment,
+    author: id,
     objectId,
+    rate: 0,
     date: Date.now,
     replies: []
   } 
@@ -40,7 +43,7 @@ exports.post_comment = async req => {
 exports.patch_comment = async req => {
   const { commentId } = req.params;
   const { comment } = req.body;
-  const { id } = userData;
+  const { id } = req.userData;
 
   await Joi.validate(comment, commentSchema);
   await Comment.where({ _id: commentId, author: id }).updateOne(comment);
@@ -52,7 +55,7 @@ exports.patch_comment = async req => {
 
 exports.delete_comment = async req => {
   const { commentId } = req.params;
-  const { id } = userData;
+  const { id } = req.userData;
 
   await Comment.deleteOne({ _id: commentId, author: id });
 

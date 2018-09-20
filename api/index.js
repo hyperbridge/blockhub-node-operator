@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
-const ExpressServer = require('../lib/index').ExpressServer;
+const { ExpressServer } = require('../lib/index');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const web3Setup = require('./middleware/web3');
+const authCheck = requrie('./middleware/auth-check');
 
 mongoose.connect(
   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@blockhub-89gr6.mongodb.net/test?retryWrites=true`,
@@ -17,6 +18,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(web3Setup);
+app.use(authCheck);
 
 const productsRoutes = require('./routes/products');
 const ethereumRoutes = require('./routes/ethereum');
