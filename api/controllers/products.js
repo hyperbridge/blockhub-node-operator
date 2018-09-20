@@ -4,9 +4,7 @@ const Product = require('../models/product');
 
 exports.get_product = async req => {
   const { productId } = req.params;
-
   const product = await Product.findOne({ _id: productId });
-
   return {
     product
   };
@@ -28,6 +26,7 @@ exports.post_product = async req => {
 exports.patch_product = async req => {
   const { productId } = req.params;
   const { product } = req.body;
+  await Joi.validate(product, productSchema);
 
   await Product.where({ _id: productId }).updateOne(product);
 
