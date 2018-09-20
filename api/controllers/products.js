@@ -45,3 +45,22 @@ exports.delete_product = async req => {
     msg: `Product with id ${productId} has been successfully deleted`
   };
 };
+
+exports.get_products_tags = async req => {
+  const { tagsType } = req.params;
+  if (tagsType !== 'developer' && tagsType !== 'system') {
+    return { msg: `You have provided invalid type of tags`, status: 400 };
+  }
+  const tags = req.params.tags.split(',');
+  const products = await Product.find({ [tagsType + '_tags']: { $in: tags } });
+  return { items: products.length, tags, products };
+};
+
+exports.get_products_name = async req => {
+  const { productName } = req.params;
+  const products = await Product.find({ name: { $regex: productName, $options: 'i' } });
+  return { 
+    items: products.length,
+    products
+  };
+};

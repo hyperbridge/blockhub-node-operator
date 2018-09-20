@@ -11,4 +11,8 @@ router.patch('/:productId', handler(productsController.patch_product));
 
 router.delete('/:productId', handler(productsController.delete_product));
 
+router.get('/tags/:tagsType/:tags', handler(productsController.get_products_tags));
+
+router.get('/name/:productName', handler(productsController.get_products_name));
+
 module.exports = router;
