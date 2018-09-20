@@ -17,6 +17,7 @@
     "mongodb": "^3.1.6",
     "mongoose": "^5.2.15",
     "optimist": "~0.6.1",
+    "web3": "^0.20.7",
     "ws": "^5.2.1"
   },
   "devDependencies": {
