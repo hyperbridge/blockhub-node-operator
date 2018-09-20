@@ -19,15 +19,17 @@ app.use(bodyParser.json());
 app.use(web3Setup);
 
 const productsRoutes = require('./routes/products');
+const ethereumRoutes = require('./routes/ethereum');
 
 app.use('/product', productsRoutes);
+app.use('/eth', ethereumRoutes);
 
 
 app.use((req, res, next) => res.status(404).json({ msg: 'Inappropriate request' }));
 
 app.use((err, req, res, next) => {
   // throw(err);
-  // console.log(err);
+  console.log(err);
   res.status(err.status || 500);
   res.json({ msg: err.msg || err.message || 'Internal server error' });
 });

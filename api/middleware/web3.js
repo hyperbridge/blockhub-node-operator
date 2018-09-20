@@ -1,27 +1,30 @@
-const web3 = require('web3');
+const Web3 = require('web3');
 
 const web3Setup = async (req, res, next) => {
 
-  const Web3 = new web3(new web3.providers.HttpProvider(
+  const web3 = new Web3(new Web3.providers.HttpProvider(
     process.env.ETH_PROVIDER || 'http://localhost:8545'
   ));
 
-  const connect = false;
 
-  if (connect && await Web3.isConnected()) {
-    const [networkId, coinBase] = await Promise.all([
-      web3.eth.net.getId(),
-      web3.eth.getCoinbase()
+  const connect = true;
+
+  if (connect && await web3.isConnected()) {
+    /*
+    const [networkId, accounts] = await Promise.all([
+      web3.eth.net.getNetworkId(),
+      web3.eth.getAccounts()
     ]);
-  
-    const balance = await Web3.eth.getBalance(coinBase);
-  
-    req.web3 = {
-      networkId,
-      coinBase,
-      balance,
-      Web3
-    };
+    */
+    const { coinbase, accounts } = web3.eth;
+    const balance = await web3.eth.getBalance(web3.eth.coinbase);
+    
+    req.web3 = web3;
+    req.web3Data = {
+      accounts,
+      coinbase,
+      balance
+    }
   }
   next();
 };
