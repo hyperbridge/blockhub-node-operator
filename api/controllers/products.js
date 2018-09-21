@@ -18,9 +18,7 @@ exports.post_product = async req => {
   const date = Date.now();
   const newProduct = {
     ...product,
-    author: userId,
-    createdAt: date,
-    updatedAt: date
+    author: userId
   }
 
   const { _id: id } = await new Product(newProduct).save();
@@ -81,7 +79,8 @@ exports.get_products_filters = async req => {
 
   const filters = properties.split('&').reduce((filters, option) => {
     const [prop, val] = option.split('=');
-    const checkedVal = nestedProps.includes(prop) ? { $in: val } : val;
+    const multiVals = val.split(',');
+    const checkedVal = nestedProps.includes(prop) ? { $in: multiVals } : val;
     return {
       ...filters,
       [prop]: checkedVal
