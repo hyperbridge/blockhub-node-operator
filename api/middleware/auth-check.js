@@ -2,7 +2,7 @@ const handler = require('./handler');
 
 const checkAuth = async (req, res, next) => {
   /*
-    // Auth check middleware
+    // Auth check middleware logic
 
   if (authFailed) {
     return {

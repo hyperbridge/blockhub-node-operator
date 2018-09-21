@@ -7,7 +7,7 @@ const web3Setup = async (req, res, next) => {
   ));
 
 
-  const connect = true;
+  const connect = false;
 
   if (connect && await web3.isConnected()) {
     /*

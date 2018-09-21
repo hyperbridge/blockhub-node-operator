@@ -73,3 +73,26 @@ exports.get_products_name = async req => {
     products
   };
 };
+
+exports.get_products_filters = async req => {
+  const { properties } = req.params;
+
+  const nestedProps = ['system_tags', 'developer_tags'];
+
+  const filters = properties.split('&').reduce((filters, option) => {
+    const [prop, val] = option.split('=');
+    const checkedVal = nestedProps.includes(prop) ? { $in: val } : val;
+    return {
+      ...filters,
+      [prop]: checkedVal
+    };
+  }, {});
+
+  const products = await Product.find(filters).limit(20);
+
+  return {
+    items: products.length,
+    filters,
+    products
+  }
+};

@@ -15,4 +15,6 @@ router.get('/tags/:tagsType/:tags', handler(productsController.get_products_tags
 
 router.get('/name/:productName', handler(productsController.get_products_name));
 
+router.get('/filters/:properties', handler(productsController.get_products_filters));
+
 module.exports = router;
