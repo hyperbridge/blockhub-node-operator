@@ -75,12 +75,27 @@ exports.get_products_name = async req => {
 exports.get_products_filters = async req => {
   const { properties } = req.params;
 
-  const nestedProps = ['system_tags', 'developer_tags'];
+  const arrayProps = ['system_tags', 'developer_tags'];
+  const objectProps = ['system_requirements', 'language_support'];
 
   const filters = properties.split('&').reduce((filters, option) => {
     const [prop, val] = option.split('=');
     const multiVals = val.split(',');
-    const checkedVal = nestedProps.includes(prop) ? { $in: multiVals } : val;
+
+    const filtersObj = multiVals.reduce((filters, option) => {
+      const [prop, val] = option.split('.');
+      return {
+        ...filters,
+        [prop]: val
+      }
+    }, {});
+
+    const checkedVal = arrayProps.includes(prop)
+      ? { $in: multiVals }
+      : objectProps.includes(prop)
+        ? { $elemMatch: filtersObj }
+        : val
+
     return {
       ...filters,
       [prop]: checkedVal
@@ -93,5 +108,5 @@ exports.get_products_filters = async req => {
     items: products.length,
     filters,
     products
-  }
+  };
 };
