@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const productSchema = mongoose.Schema({
+const productSchema = Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
   old_price: Number,
@@ -25,8 +26,8 @@ const productSchema = mongoose.Schema({
   community: Object,
   name_url: String,
   steam_id: Number,
-  createdAt: Date,
-  updatedAt: Date,
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
   author: String
 });
 

@@ -11,6 +11,8 @@ router.get('/comments/:objectId', handler(commentsController.get_comments));
 
 router.post('/:objectId', handler(commentsController.post_comment));
 
+router.post('/:objectId/:commentId', handler(commentsController.post_comment_reply));
+
 router.patch('/:commentId', handler(commentsController.patch_comment));
 
 router.delete('/:commentId', handler(commentsController.delete_comment));

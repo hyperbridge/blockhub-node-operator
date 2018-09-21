@@ -5,9 +5,9 @@ const Comment = require('../models/comment');
 exports.get_comment = async req => {
   const { commentId } = req.params;
 
-  const product = await Comment.findOne({ _id: productId });
+  const comment = await Comment.findOne({ _id: commentId });
 
-  return { product };
+  return { comment };
 };
 
 exports.get_comments = async req => {
@@ -25,13 +25,9 @@ exports.post_comment = async req => {
 
   await Joi.validate(comment, commentSchema);
   const newComment = {
-    ...comment,
+    text: comment.text,
     author: userId,
-    objectId,
-    rate: 0,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-    replies: []
+    objectId
   } 
   const { _id: id } = await new Comment(newComment).save();
 
@@ -63,5 +59,28 @@ exports.delete_comment = async req => {
 
   return {
     msg: `Comment with id ${commentId} has been successfully deleted`
+  };
+};
+
+exports.post_comment_reply = async req => {
+  const { commentId, objectId } = req.params;
+  const { comment } = req.body;
+  const { id: userId } = req.userData;
+
+  await Joi.validate(comment, commentSchema);
+
+  const newComment = {
+    text: comment.text,
+    author: userId,
+    objectId
+  }
+  
+  const { _id } = await new Comment(newComment).save();
+  await Comment.findOneAndUpdate({ _id }, { $push: { replies: _id } });
+
+  return {
+    msg: `Comment reply has been successfully created with id ${_id} to comment ${commentId} at object with id ${ObjectId}`,
+    id: _id,
+    status: 201
   };
 };
