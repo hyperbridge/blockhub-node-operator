@@ -6,7 +6,7 @@ const { ExpressServer } = require('../lib/index');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const web3Setup = require('./middleware/web3');
-const authCheck = requrie('./middleware/auth-check');
+const authCheck = require('./middleware/auth-check');
 
 mongoose.connect(
   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@blockhub-89gr6.mongodb.net/test?retryWrites=true`,
@@ -21,9 +21,11 @@ app.use(web3Setup);
 app.use(authCheck);
 
 const productsRoutes = require('./routes/products');
+const commentsRoutes = require('./routes/comments');
 const ethereumRoutes = require('./routes/ethereum');
 
 app.use('/product', productsRoutes);
+app.use('/comment', commentsRoutes);
 app.use('/eth', ethereumRoutes);
 
 

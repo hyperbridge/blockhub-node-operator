@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const commentSchema = require('../schemas/comment');
 const Comment = require('../models/comment');
 
@@ -12,7 +13,7 @@ exports.get_comment = async req => {
 exports.get_comments = async req => {
   const { objectId } = req.params;
 
-  const comments = await Comment.find({ objectId });
+  const comments = await Comment.find({ objectId, options: { limit: 50 } });
 
   return { items: comments.length, comments };
 };
@@ -20,16 +21,16 @@ exports.get_comments = async req => {
 exports.post_comment = async req => {
   const { objectId } = req.params;
   const { comment } = req.body;
-  const { id } = req.userData;
+  const { id: userId } = req.userData;
 
   await Joi.validate(comment, commentSchema);
   const newComment = {
     ...comment,
-    author: id,
+    author: userId,
     objectId,
     rate: 0,
-    createdAt: Date.now,
-    updatedAt: Date.now,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
     replies: []
   } 
   const { _id: id } = await new Comment(newComment).save();

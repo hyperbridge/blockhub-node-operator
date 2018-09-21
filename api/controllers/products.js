@@ -12,14 +12,15 @@ exports.get_product = async req => {
 
 exports.post_product = async req => {
   const { product } = req.body;
-  const { id } = req.userData;
+  const { id: userId } = req.userData;
   await Joi.validate(product, productSchema);
-
+  
+  const date = Date.now();
   const newProduct = {
     ...product,
-    author: id,
-    createdAt: Date.now,
-    updatedAt: Date.now
+    author: userId,
+    createdAt: date,
+    updatedAt: date
   }
 
   const { _id: id } = await new Product(newProduct).save();
@@ -60,13 +61,13 @@ exports.get_products_tags = async req => {
     return { msg: `You have provided invalid type of tags`, status: 400 };
   }
   const tags = req.params.tags.split(',');
-  const products = await Product.find({ [tagsType + '_tags']: { $in: tags } });
+  const products = await Product.find({ [tagsType + '_tags']: { $in: tags }, options: { limit: 5 } });
   return { items: products.length, tags, products };
 };
 
 exports.get_products_name = async req => {
   const { productName } = req.params;
-  const products = await Product.find({ name: { $regex: productName, $options: 'i' } });
+  const products = await Product.find({ name: { $regex: productName, $options: 'i' }, options: { limit: 5 } });
   return { 
     items: products.length,
     products

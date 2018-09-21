@@ -3,7 +3,8 @@ const handler = fn => (request, response, next) => new Promise(resolve => {
   resolve(fn(request, response, next));
 })
 .then(res => {
-  return response.status(res.status || 200).json({ ...res, status: undefined });
+  if (res) return response.status(res.status || 200).json({ ...res, status: undefined });
+  // else next();
 })
 .catch(next);
 

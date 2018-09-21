@@ -9,7 +9,7 @@ router.get('/comments/:objectId', handler(commentsController.get_comments));
 
 // router.get('/project/:projectId', handler(commentsController.get_comments_project));
 
-router.post('/', handler(commentsController.post_comment));
+router.post('/:objectId', handler(commentsController.post_comment));
 
 router.patch('/:commentId', handler(commentsController.patch_comment));
 
