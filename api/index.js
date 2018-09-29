@@ -14,7 +14,7 @@ mongoose.connect(
 );
 
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(web3Setup);
@@ -34,7 +34,10 @@ app.use((req, res, next) => res.status(404).json({ msg: 'Inappropriate request' 
 app.use((err, req, res, next) => {
   console.log(err);
   res.status(err.status || 500);
-  res.json({ msg: err.msg || err.message || 'Internal server error' });
+  res.json({ msg: process.env.NODE_ENV === 'production'
+    ? 'Internal server error'
+    : err.msg || err.message || 'Internal server error (Unspecified message)'
+  });
 });
 
 
