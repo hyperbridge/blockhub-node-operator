@@ -1,10 +1,37 @@
-[![Build Status](https://travis-ci.org/hyperbridge/blockhub-node-operator.png?branch=master)](https://travis-ci.org/hyperbridge/blockhub-node-operator)
+<div align="center">
+  <br>
 
-# BlockHub Node Operator
+  <a href="https://hyperbridge.org/"><img src="https://hyperbridge.org/img/blockhub-logotype-color.svg" width="400" alt="logo"></a>
+
+  <br>
+
+  [![Gitter chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/Hyperbridge/Lobby) [![license](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/hyperbridge/blockhub-web-client/blob/master/LICENSE.md)
+
+  <h1><code>Node Operator</code> for BlockHub</h1>
+</div>
+
+<br>
 
 BlockHub Node Operator helps broker connections between BlockHub clients. Data is not proxied through the server.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://www.heroku.com/deploy/?template=https://github.com/hyperbridge/blockhub-node-operator)
+<div align="center">
+  <a href="https://www.heroku.com/deploy/?template=https://github.com/hyperbridge/blockhub-node-operator"><img src="https://www.herokucdn.com/deploy/button.png" width="140" alt=""></a>
+</div>
+
+
+## Quick Links
+
+- [Site](http://blockhub.gg/)
+- 📺 [Demo](http://beta.blockhub.gg/)
+- 📖 [Docs](http://docs.hyperbridge.org/blockhub)
+- [EIPs](https://github.com/hyperbridge/EIPs)
+- [Web Client](https://github.com/hyperbridge/blockhub-web-client)
+- [Desktop Client](https://github.com/hyperbridge/blockhub-desktop-client)
+- [Node Operator](https://github.com/hyperbridge/blockhub-node-operator)
+- [Token](https://github.com/hyperbridge/token)
+- [Funding Protocol](https://github.com/hyperbridge/funding-protocol)
+- [Marketplace Protocol](https://github.com/hyperbridge/marketplace-protocol)
+
 
 ### Run Server
 
