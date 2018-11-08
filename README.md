@@ -12,26 +12,42 @@
 
 <br>
 
-BlockHub Node Operator helps broker connections between BlockHub clients. Data is not proxied through the server.
+BlockHub Node Operator assists BlockHub clients with the following:
 
-<div align="center">
-  <a href="https://www.heroku.com/deploy/?template=https://github.com/hyperbridge/blockhub-node-operator"><img src="https://www.herokucdn.com/deploy/button.png" width="140" alt=""></a>
-</div>
-
+* Brokering p2p connections between clients. Data is not proxied/passed through the operator.
+* Distributing IPFS downloads.
+* Serving data for clients to hydrate screen information (such as a product page).
 
 ## Quick Links
 
-- [Site](http://blockhub.gg/)
-- 📺 [Demo](http://beta.blockhub.gg/)
+- 🌐 [Site - Production](https://blockhub.gg/)
+- 📺 [Site - Preview](https://preview.blockhub.gg/)
+- 📺 [Site - Beta](https://beta.blockhub.gg/)
+- 📺 [Site - Staging](https://staging.blockhub.gg/)
 - 📖 [Docs](http://docs.hyperbridge.org/blockhub)
-- [EIPs](https://github.com/hyperbridge/EIPs)
-- [Web Client](https://github.com/hyperbridge/blockhub-web-client)
-- [Desktop Client](https://github.com/hyperbridge/blockhub-desktop-client)
-- [Node Operator](https://github.com/hyperbridge/blockhub-node-operator)
-- [Token](https://github.com/hyperbridge/token)
-- [Funding Protocol](https://github.com/hyperbridge/funding-protocol)
-- [Marketplace Protocol](https://github.com/hyperbridge/marketplace-protocol)
+- 📓 [EIPs](https://github.com/hyperbridge/EIPs)
+- 💻 [Web Client](https://github.com/hyperbridge/blockhub-web-client)
+- 💻 [Desktop Client](https://github.com/hyperbridge/blockhub-desktop-client)
+- 🛡 [Node Operator](https://github.com/hyperbridge/blockhub-node-operator)
+- 🔗 [Token](https://github.com/hyperbridge/token)
+- 🔗 [Funding Protocol](https://github.com/hyperbridge/funding-protocol)
+- 🔗 [Marketplace Protocol](https://github.com/hyperbridge/marketplace-protocol)
 
+## Install
+
+Install Node Package Manager (NVM): 
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+
+Install Node 8.11.1: 
+
+```bash
+nvm install 8.11.1
+```
+
+If you get `nvm: command not found`, simply close your current terminal, open a new terminal, and try again. Please see the [NVM readme](https://github.com/creationix/nvm) if you have any issues.
 
 ### Run Server
 
